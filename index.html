@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator using JavaScript - Easy Tutorials</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="calculator">
+      <form name="calc">
+        <div class="display">
+          <input type="text" id="display" name="display" readonly>
+        </div>
+        <div class="main-div">
+          <input type="button" value="AC" onClick="clearDisplay()" class="operator">
+          <input type="button" value="DE" onClick="deleteLast()" class="operator">
+          <input type="button" value="." onClick="appendValue('.')" class="operator">
+          <input type="button" value="/" onClick="appendValue('/')" class="operator">
+        </div>
+        <div class="main-div">
+          <input type="button" value="7" onClick="appendValue('7')">
+          <input type="button" value="8" onClick="appendValue('8')">
+          <input type="button" value="9" onClick="appendValue('9')">
+          <input type="button" value="*" onClick="appendValue('*')" class="operator">
+        </div>
+        <div class="main-div">
+          <input type="button" value="4" onClick="appendValue('4')">
+          <input type="button" value="5" onClick="appendValue('5')">
+          <input type="button" value="6" onClick="appendValue('6')">
+          <input type="button" value="-" onClick="appendValue('-')" class="operator">
+        </div>
+        <div class="main-div">
+          <input type="button" value="1" onClick="appendValue('1')">
+          <input type="button" value="2" onClick="appendValue('2')">
+          <input type="button" value="3" onClick="appendValue('3')">
+          <input type="button" value="+" onClick="appendValue('+')" class="operator">
+        </div>
+        <div class="main-div">
+          <input type="button" value="00" onClick="appendValue('00')">
+          <input type="button" value="0" onClick="appendValue('0')">
+          <input type="button" value="=" onClick="calculateResult()" class="equal operator">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Function to append values to the display
+    function appendValue(value) {
+      document.getElementById('display').value += value;
+    }
+
+    // Function to clear the display
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    // Function to delete the last character
+    function deleteLast() {
+      const display = document.getElementById('display');
+      display.value = display.value.slice(0, -1);
+    }
+
+    // Function to calculate the result
+    function calculateResult() {
+      const display = document.getElementById('display');
+      try {
+        display.value = eval(display.value);
+      } catch (e) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
